@@ -19,11 +19,11 @@
 
 ## Table of Contents
 
-- [🤔 What is Spec-Driven Development?](#-what-is-spec-driven-development)
-- [⚡ Get Started](#-get-started)
-- [📽️ Video Overview](#️-video-overview)
-- [🌍 Community](#-community)
-- [🤖 Supported AI Coding Agent Integrations](#-supported-ai-coding-agent-integrations)
+- [🤔 ¿Qué es el desarrollo basado en especificaciones?](#-what-is-spec-driven-development)
+- [⚡ Cómo empezar](#-get-started)
+- [📽️ Resumen en vídeo](#️-video-overview)
+- [🌍 Comunidad](#-community)
+- [🤖 Integraciones compatibles con el agente de programación basado en IA](#-supported-ai-coding-agent-integrations)
 - [🔧 Specify CLI Reference](#-specify-cli-reference)
 - [🧩 Making Spec Kit Your Own: Extensions & Presets](#-making-spec-kit-your-own-extensions--presets)
 - [📦 Bundles: Role-Based Setups](#-bundles-role-based-setups)
