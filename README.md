@@ -19,7 +19,7 @@
 
 ## Table of Contents
 
-- [🤔 ¿Qué es el desarrollo basado en especificaciones?](#qué-es-el-desarrollo-basado-en-especificaciones)
+- [🤔 ¿Qué es el desarrollo basado en especificaciones?](#-qué-es-el-desarrollo-basado-en-especificaciones)
 - [⚡ Cómo empezar](#-get-started)
 - [📽️ Resumen en vídeo](#️-video-overview)
 - [🌍 Comunidad](#-community)
