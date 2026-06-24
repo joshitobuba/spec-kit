@@ -24,18 +24,18 @@
 - [📽️ Resumen en vídeo](#️-resumen-en-vídeo)
 - [🌍 Comunidad](#-comunidad)
 - [🤖 Integraciones compatibles con agentes de programación basados en IA](#-integraciones-compatibles-con-agentes-de-programación-basados-en-ia)
-- [🔧 Referencia de Specify en la CLI](#-specify-cli-reference)
-- [🧩 Personaliza Spec Kit: extensiones y ajustes preestablecidos](#-making-spec-kit-your-own-extensions--presets)
-- [📦 Paquetes: configuraciones basadas en roles](#-bundles-role-based-setups)
-- [📚 Filosofía fundamental](#-core-philosophy)
-- [🌟 Fases de desarrollo](#-development-phases)
-- [🎯 Objetivos experimentales](#-experimental-goals)
-- [🔧 Prerequisitos](#-prerequisites)
-- [📖 Aprende más](#-learn-more)
-- [📋 Proceso detallado](#-detailed-process)
-- [💬 Asistencia](#-support)
-- [🙏 Agradecimientos](#-acknowledgements)
-- [📄 Licencia](#-license)
+- [🔧 Referencia de Specify en la CLI](#-referencia-de-specify-en-la-cli)
+- [🧩 Personaliza Spec Kit: extensiones y ajustes preestablecidos](#-personaliza-spec-kit-extensiones-y-ajustes-preestablecidos)
+- [📦 Paquetes: configuraciones basadas en roles](#-paquetes-configuraciones-basadas-en-roles)
+- [📚 Filosofía fundamental](#-filosofía-fundamental)
+- [🌟 Fases de desarrollo](#-fases-de-desarrollo)
+- [🎯 Objetivos experimentales](#-objetivos-experimentales)
+- [🔧 Prerequisitos](#-prerequisitos)
+- [📖 Aprende más](#-aprende-más)
+- [📋 Proceso detallado](#proceso-detallado)
+- [💬 Asistencia](#-asistencia)
+- [🙏 Agradecimientos](#-agradecimientos)
+- [📄 Licencia](#-licencia)
 
 ## 🤔 ¿Qué es el desarrollo basado en especificaciones?
 
@@ -176,9 +176,9 @@ Comandos adicionales para mejorar la calidad y la validación:
 | `/speckit.analyze`   | `speckit-analyze`      | Análisis de consistencia y cobertura entre artefactos (ejecutar después de `/speckit.tasks`, y antes de `/speckit.implement`)                             |
 | `/speckit.checklist` | `speckit-checklist`    | Crea listas de comprobación de calidad personalizadas que verifiquen la exhaustividad, la claridad y la coherencia de los requisitos (como "pruebas unitarias en inglés") |
 
-## 🔧 Specify CLI Reference
+## 🔧 Referencia de Specify en la CLI
 
-For full command details, options, and examples, see the [CLI Reference](https://github.github.io/spec-kit/reference/overview.html).
+Para obtener información detallada sobre los comandos, las opciones y los ejemplos, consulta la [Referencia CLI](https://github.github.io/spec-kit/reference/overview.html).
 
 ## 🧩 Making Spec Kit Your Own: Extensions & Presets
 
