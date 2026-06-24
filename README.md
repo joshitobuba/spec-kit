@@ -20,8 +20,8 @@
 ## Table of Contents
 
 - [🤔 ¿Qué es el desarrollo basado en especificaciones?](#-qué-es-el-desarrollo-basado-en-especificaciones)
-- [⚡ Cómo empezar](#-get-started)
-- [📽️ Resumen en vídeo](#️-video-overview)
+- [⚡ Cómo empezar](#-cómo-empezar)
+- [📽️ Resumen en vídeo](#️-resumen-en-vídeo)
 - [🌍 Comunidad](#-community)
 - [🤖 Integraciones compatibles con el agente de programación basado en IA](#-supported-ai-coding-agent-integrations)
 - [🔧 Referencia de Specify en la CLI](#-specify-cli-reference)
@@ -39,90 +39,90 @@
 
 ## 🤔 ¿Qué es el desarrollo basado en especificaciones?
 
-Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
+El desarrollo basado en especificaciones **da un giro radical** al desarrollo de software tradicional. Durante décadas, el código ha sido el rey — las especificaciones no eran más que un andamiaje que construíamos y descartábamos una vez que comenzaba el "trabajo de verdad" de la programación. El desarrollo basado en especificaciones cambia esto: **las especificaciones se convierten en ejecutables**, generando directamente implementaciones funcionales en lugar de limitarse a guiarlas.
 
-## ⚡ Get Started
+## ⚡Cómo empezar
 
-### 1. Install Specify CLI
+### 1. Instalar Specify en CLI
 
-Requires **[uv](https://docs.astral.sh/uv/)** ([install uv](./docs/install/uv.md)). Replace `vX.Y.Z` with the latest tag from [Releases](https://github.com/github/spec-kit/releases):
+Requiere **[uv](https://docs.astral.sh/uv/)** ([install uv](./docs/install/uv.md)). Sustituye `vX.Y.Z` por la etiqueta más reciente de [Versiones](https://github.com/github/spec-kit/releases):
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
 ```
 
-See the [Installation Guide](./docs/installation.md) for alternative methods, verification, upgrade, and troubleshooting.
+Consulta la [Guía de instalación](./docs/installation.md) para conocer métodos alternativos, procedimientos de verificación, actualizaciones y resolución de problemas.
 
-### 2. Initialize a project
+### 2. Iniciar un proyecto
 
 ```bash
 specify init my-project --integration copilot
 cd my-project
 ```
 
-To check for updates or upgrade the installed CLI, use the self-management commands. See the [Upgrade Guide](./docs/upgrade.md) for detailed scenarios and customization options.
+Para comprobar si hay actualizaciones o para actualizar la CLI instalada, utiliza los comandos de autogestión. Consulta la [Guía de actualización](./docs/upgrade.md) para conocer casos de uso detallados y opciones de personalización.
 
 ```bash
-# Check whether a newer release is available (read-only — does not modify anything)
+# Comprueba si hay una versión más reciente disponible (solo lectura — no modifica nada)
 specify self check
 
-# Preview what would run, without actually upgrading
+# Ver una vista previa de lo que se ejecutaría, sin realizar la actualización
 specify self upgrade --dry-run
 
-# Upgrade in place to the latest stable release (auto-detects uv tool vs pipx install)
+# Actualización in situ a la última versión estable (detecta automáticamente si se utiliza la herramienta «uv» o «pipx install»)
 specify self upgrade
 
-# Or pin a specific release tag (replace vX.Y.Z[suffix] with your desired release tag)
+# O bien, añade una etiqueta de versión concreta (sustituye vX.Y.Z[suffix] por la etiqueta de versión que desees)
 specify self upgrade --tag vX.Y.Z[suffix]
 ```
 
-Bare `specify self upgrade` executes immediately, matching the no-prompt behavior of commands like `pip install -U` and `npm update`. For `uv tool` installs, it runs `uv tool install specify-cli --force --from <git ref>` under the hood so pinned release tags work, including dev, alpha/beta/rc, or build metadata suffixes. `uvx` (ephemeral) runs and source checkouts are detected and produce path-specific guidance instead of running an installer. Set `SPECIFY_UPGRADE_TIMEOUT_SECS` to cap how long the installer subprocess may run (default: no timeout — interrupt with `Ctrl+C` if needed).
+El comando `specify self upgrade` se ejecuta de inmediato, igual que ocurre con comandos como `pip install -U` y `npm update` que no solicitan confirmación. En el caso de las instalaciones de `uv tool`, se ejecuta en segundo plano el comando `uv tool install specify-cli --force --from <git ref>` de modo que funcionan las etiquetas de versión fijadas, incluidas las de desarrollo, alpha/beta/rc, o los sufijos de metadatos de compilación. Se detectan las ejecuciones de `uvx` (efímeras) y las descargas de código fuente, y se generan instrucciones específicas para cada ruta en lugar de ejecutar un instalador. Establece `SPECIFY_UPGRADE_TIMEOUT_SECS` para limitar el tiempo que puede ejecutarse el subproceso del instalador (por defecto: sin límite de tiempo — interrumpe con `Ctrl+C` si es necesario).
 
-### 3. Establish project principles
+### 3. Establecer los principios del proyecto
 
-Launch your coding agent in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI in skills mode uses `$speckit-*` instead; GitHub Copilot CLI uses `/agents` to select the agent or address it directly in a prompt.
+Ejecuta tu agente de programación en el directorio del proyecto. La mayoría de los agentes ofrecen las funciones de Spec-Kit como comandos de barra `/speckit.*`; la CLI de Codex, en modo skills, utiliza en su lugar `$speckit-*`; la CLI de GitHub Copilot utiliza `/agents` para seleccionar el agente o se le indica directamente en la línea de comandos.
 
-Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
+Utiliza el comando **`/speckit.constitution`** para definir los principios rectores y las directrices de desarrollo de tu proyecto, que servirán de guía para todo el desarrollo posterior.
 
 ```bash
 /speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
 ```
 
-### 4. Create the spec
+### 4. Elaborar las especificaciones
 
-Use the **`/speckit.specify`** command to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
+Utiliza el comando **`/speckit.specify`** para describir lo que quieres crear. Céntrate en el **qué** and **por qué**, no en la pila tecnológica.
 
 ```bash
 /speckit.specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never in other nested albums. Within each album, photos are previewed in a tile-like interface.
 ```
 
-### 5. Create a technical implementation plan
+### 5. Elaborar un plan de implementación técnica
 
-Use the **`/speckit.plan`** command to provide your tech stack and architecture choices.
+Utiliza el comando **`/speckit.plan`** para indicar tu pila tecnológica y las opciones de arquitectura.
 
 ```bash
 /speckit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
-### 6. Break down into tasks
+### 6. Dividir en tareas
 
-Use **`/speckit.tasks`** to create an actionable task list from your implementation plan.
+Utiliza **`/speckit.tasks`** para crear una lista de tareas prácticas a partir de tu plan de implementación.
 
 ```bash
 /speckit.tasks
 ```
 
-### 7. Execute implementation
+### 7. Ejecutar implementación
 
-Use **`/speckit.implement`** to execute all tasks and build your feature according to the plan.
+Utiliza **`/speckit.implement`** para ejecutar todas las tareas y compilar tu funcionalidad según lo previsto.
 
 ```bash
 /speckit.implement
 ```
 
-For detailed step-by-step instructions, see our [comprehensive guide](./spec-driven.md).
+Para obtener instrucciones detalladas paso a paso, consulta nuestra [guía completa](./spec-driven.md).
 
-## 📽️ Video Overview
+## 📽️ Resumen en vídeo
 
 Want to see Spec Kit in action? Watch our [video overview](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)!
 
