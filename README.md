@@ -148,9 +148,9 @@ Spec Kit es compatible con más de 30 agentes de programación basados en IA —
 
 Ejecuta `specify integration list` para ver todas las integraciones disponibles en la versión que tienes instalada.
 
-## Available Slash Commands
+## Comandos de barra disponibles
 
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development. For integrations that support skills mode, passing `--integration <agent> --integration-options="--skills"` installs agent skills instead of slash-command prompt files.
+Tras ejecutar `specify init`, tu agente de programación de IA tendrá acceso a estos comandos con barra para un desarrollo estructurado. En el caso de las integraciones compatibles con el modo skills, al introducir `--integration <agent> --integration-options="--skills"` se instalan las skills del agente en lugar de los archivos de comandos con barra.
 
 ### Core Commands
 
