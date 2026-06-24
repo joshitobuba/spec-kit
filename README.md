@@ -1,11 +1,11 @@
 <div align="center">
     <img src="./media/logo_large.webp" alt="Spec Kit Logo" width="200" height="200"/>
     <h1>🌱 Spec Kit</h1>
-    <h3><em>Build high-quality software faster.</em></h3>
+    <h3><em>Desarrolla software de alta calidad más rápido.</em></h3>
 </div>
 
 <p align="center">
-    <strong>An open source toolkit that allows you to focus on product scenarios and predictable outcomes instead of vibe coding every piece from scratch.</strong>
+    <strong>Un conjunto de herramientas de código abierto que te permite centrarte en los escenarios del producto y en los resultados previsibles, en lugar de tener que programar cada elemento desde cero.</strong>
 </p>
 
 <p align="center">
