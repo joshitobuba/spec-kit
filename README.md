@@ -24,20 +24,20 @@
 - [📽️ Resumen en vídeo](#️-video-overview)
 - [🌍 Comunidad](#-community)
 - [🤖 Integraciones compatibles con el agente de programación basado en IA](#-supported-ai-coding-agent-integrations)
-- [🔧 Specify CLI Reference](#-specify-cli-reference)
-- [🧩 Making Spec Kit Your Own: Extensions & Presets](#-making-spec-kit-your-own-extensions--presets)
-- [📦 Bundles: Role-Based Setups](#-bundles-role-based-setups)
-- [📚 Core Philosophy](#-core-philosophy)
-- [🌟 Development Phases](#-development-phases)
-- [🎯 Experimental Goals](#-experimental-goals)
-- [🔧 Prerequisites](#-prerequisites)
-- [📖 Learn More](#-learn-more)
-- [📋 Detailed Process](#-detailed-process)
-- [💬 Support](#-support)
-- [🙏 Acknowledgements](#-acknowledgements)
-- [📄 License](#-license)
+- [🔧 Referencia de Specify en la CLI](#-specify-cli-reference)
+- [🧩 Personaliza Spec Kit: extensiones y ajustes preestablecidos](#-making-spec-kit-your-own-extensions--presets)
+- [📦 Paquetes: configuraciones basadas en roles](#-bundles-role-based-setups)
+- [📚 Filosofía fundamental](#-core-philosophy)
+- [🌟 Fases de desarrollo](#-development-phases)
+- [🎯 Objetivos experimentales](#-experimental-goals)
+- [🔧 Prerequisitos](#-prerequisites)
+- [📖 Aprende más](#-learn-more)
+- [📋 Proceso detallado](#-detailed-process)
+- [💬 Asistencia](#-support)
+- [🙏 Agradecimientos](#-acknowledgements)
+- [📄 Licencia](#-license)
 
-## 🤔 What is Spec-Driven Development?
+## 🤔 ¿Qué es el desarrollo basado en especificaciones?
 
 Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
 
