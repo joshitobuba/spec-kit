@@ -191,115 +191,114 @@ Spec Kit se puede adaptar a tus necesidades mediante dos sistemas complementario
 |        3 | Extensions — Añade nuevas funciones               | `.specify/extensions/templates/` |
 |      ⬇ 4 | Spec Kit Core — Comandos y plantillas de SDD integrados | `.specify/templates/`            |
 
-- Los **Templates** se resuelven **runtime** — Spec Kit walks the stack top-down and uses the first match.
-- Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset.
-- **Extension/preset commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`).
-- If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically.
-- If no overrides or customizations exist, Spec Kit uses its core defaults.
+- Los **Templates** se resuelven en **tiempo de ejecución** — Spec Kit recorre la pila de arriba abajo y utiliza la primera coincidencia.
+- Las modificaciones locales de proyecto (`.specify/templates/overrides/`) te permiten realizar ajustes puntuales para un único proyecto sin necesidad de crear un preajuste completo.
+- **Los comandos Extension/preset** se aplican en el **tiempo de instalación** — cuando ejecutas `specify extension add` o `specify preset add`, los archivos de comandos se escriben en los directorios del agente (por ejemplo, `.claude/commands/`).
+- Si varias configuraciones predefinidas o extensiones proporcionan el mismo comando, prevalece la versión con mayor prioridad. Al eliminarla, se restaura automáticamente la versión con la siguiente prioridad más alta.
+- Si no existen modificaciones (overrides) ni personalizaciones, Spec Kit utiliza sus valores predeterminados básicos.
 
-### Extensions — Add New Capabilities
+### Extensions — Añadir nuevas funcionalidades
 
-Use **extensions** when you need functionality that goes beyond Spec Kit's core. Extensions introduce new commands and templates — for example, adding domain-specific workflows that are not covered by the built-in SDD commands, integrating with external tools, or adding entirely new development phases. They expand *what Spec Kit can do*.
+Use **extensions** cuando necesites funcionalidades que vayan más allá del núcleo de Spec Kit. Las extensiones introducen nuevos comandos y plantillas — por ejemplo, añaden flujos de trabajo específicos de cada ámbito que no están cubiertos por los comandos SDD integrados, se integran con herramientas externas o añaden fases de desarrollo completamente nuevas. Amplian *lo que Spec Kit puede hacer*.
 
 ```bash
-# Search available extensions
+# Buscar extensiones disponibles
 specify extension search
 
-# Install an extension
+# Instala una extensión
 specify extension add <extension-name>
 ```
 
-For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
+Por ejemplo, las extensiones podrían añadir la integración con Jira, la revisión del código tras la implementación, la trazabilidad de las pruebas según el modelo-V o el diagnóstico del estado de los proyectos..
 
-See the [Extensions reference](https://github.github.io/spec-kit/reference/extensions.html) for the full command guide. Browse the [community extensions](https://github.github.io/spec-kit/community/extensions.html) for what's available.
+Consulta la [Referencia de extensiones](https://github.github.io/spec-kit/reference/extensions.html) para consultar la guía completa de comandos. Explora las [extensiones de la comunidad](https://github.github.io/spec-kit/community/extensions.html) para ver qué hay disponible.
 
-### Presets — Customize Existing Workflows
+### Presets — Personalizar los flujos de trabajo existentes
 
-Use **presets** when you want to change *how* Spec Kit works without adding new capabilities. Presets override the templates and commands that ship with the core *and* with installed extensions — for example, enforcing a compliance-oriented spec format, using domain-specific terminology, or applying organizational standards to plans and tasks. They customize the artifacts and instructions that Spec Kit and its extensions produce.
+Utiliza **presets** cuando quieras modificar *cómo* funciona Spec Kit sin añadir nuevas funcionalidades. Las configuraciones predefinidas sustituyen las plantillas y los comandos que vienen con el núcleo *y* con las extensiones instaladas — por ejemplo, para imponer un formato de especificaciones orientado al cumplimiento normativo, utilizar terminología específica del ámbito o aplicar normas organizativas a los planes y las tareas. Personalizan los artefactos y las instrucciones que generan Spec Kit y sus extensiones.
 
 ```bash
-# Search available presets
+# Buscar presets disponibles
 specify preset search
 
-# Install a preset
+# Instalar un preset
 specify preset add <preset-name>
 ```
 
-For example, presets could restructure spec templates to require regulatory traceability, adapt the workflow to fit the methodology you use (e.g., Agile, Kanban, Waterfall, jobs-to-be-done, or domain-driven design), add mandatory security review gates to plans, enforce test-first task ordering, or localize the entire workflow to a different language. The [pirate-speak demo](https://github.com/mnriem/spec-kit-pirate-speak-preset-demo) shows just how deep the customization can go. Multiple presets can be stacked with priority ordering.
+Por ejemplo, los presets podrían reestructurar las plantillas de especificaciones para exigir la trazabilidad normativa, adaptar el flujo de trabajo a la metodología que utilices (por ejemplo, Agile, Kanban, Waterfall, jobs-to-be-done, o diseño orientado al dominio), añadir controles obligatorios de revisión de seguridad a los planes, imponer el orden de tareas «test-first» o localizar todo el flujo de trabajo a otro idioma. La [demo pirate-speak](https://github.com/mnriem/spec-kit-pirate-speak-preset-demo) muestra hasta qué punto puede llegar la personalización. Se pueden apilar varios ajustes predefinidos ordenándolos por prioridad.
 
-See the [Presets reference](https://github.github.io/spec-kit/reference/presets.html) for the full command guide, including resolution order and priority stacking.
+Consulta la [Referencia de Presets](https://github.github.io/spec-kit/reference/presets.html) para consultar la guía completa de comandos, incluido el orden de resolución y la acumulación de prioridades.
 
-## 📦 Bundles: Role-Based Setups
+## 📦 Paquetes: configuraciones basadas en roles
 
-Extensions and presets are individual building blocks. A **bundle** packages a
-curated set of them — extensions, presets, steps, and workflows — into a single,
-versioned, role-oriented setup so a whole team persona (product manager, business
-analyst, security researcher, developer, …) can be provisioned with one command.
+Las extensions y presets son componentes básicos individuales. Un **paquete (bundle)** agrupa un
+conjunto seleccionado de ellos— extensions, presets, steps, y workflows — en una única
+configuración versionada y orientada a roles, de modo que se pueda provisionar un perfil completo de equipo (gestor de producto, analista
+de negocios, investigador de seguridad, desarrollador, …) con un solo comando.
 
-A bundle is described by a hand-written `bundle.yml` manifest. It pins each
-component to a version and, optionally, targets a specific integration; a bundle
-with no `integration` is **agnostic** and inherits whatever integration the
-project already uses.
+Un paquete se describe mediante un manifiesto `bundle.yml` manifest. Asigna cada
+componente a una versión y, opcionalmente, se dirige a una integración específica; un paquete
+sin `integration` es **agnóstico** y hereda la integración que el proyecto ya utilice.
 
 ```bash
-# Discover bundles in the active catalog stack
+# Descubre los paquetes en la pila del catálogo activo
 specify bundle search [<query>]
 
-# Inspect the exact component set a bundle will add (equals what install does)
+# Comprueba el conjunto exacto de componentes que añadirá un paquete (es lo mismo que hace la instalación)
 specify bundle info <bundle-id>
 
-# Install a bundle's full component set in one operation
+# Instalar todos los componentes de un paquete en una sola operación
 specify bundle install <bundle-id>
 
-# See what's installed, then update or remove non-destructively
+# Comprueba qué programas tienes instalados y, a continuación, actualiza o elimina los que no necesites sin perder datos.
 specify bundle list
-specify bundle update <bundle-id>     # or --all
-specify bundle remove <bundle-id>     # removes only this bundle's components
+specify bundle update <bundle-id>     # o --all
+specify bundle remove <bundle-id>     # elimina únicamente los componentes de este paquete
 ```
 
-Bundles resolve from a **priority-ordered catalog stack** (project > user >
-built-in). Each source carries an install policy: `install-allowed` sources can
-be installed from, while `discovery-only` sources are visible in `search`/`info`
-but refuse installation. Manage the stack with `specify bundle catalog list|add|remove`.
+Los paquetes se seleccionan a partir de una **pila de catálogos ordenada por prioridad** (project > user >
+built-in). Cada fuente lleva asociada una política de instalación: las fuentes `install-allowed` permiten
+la instalación, mientras que las fuentes `discovery-only` son visibles en `search`/`info`
+pero no permiten la instalación. Gestiona la pila con `specify bundle catalog list|add|remove`.
 
-Authors validate and package bundles locally — there is no first-class publish;
-distribution is hosting the built artifact and adding a catalog entry:
+Los autores validan y empaquetan los paquetes a nivel local — no existe un proceso de publicación propiamente dicho;
+la distribución consiste en alojar el artefacto compilado y añadir una entrada al catálogo:
 
 ```bash
-specify bundle validate --path ./my-bundle      # structural + reference checks
-specify bundle build --path ./my-bundle         # produce a versioned .zip artifact
+specify bundle validate --path ./my-bundle      # verificaciones estructurales y de referencias
+specify bundle build --path ./my-bundle         # generar un archivo .zip con control de versiones
 ```
 
-Four ready-to-read example manifests live under
+Hay cuatro ejemplos de manifiestos listos para consultar en
 [`examples/bundles/`](examples/bundles/) (product manager, business analyst,
 security researcher, developer).
 
-Key guarantees: `info` shows exactly what `install` adds (transparency);
-installs are idempotent and confined to the project root; `remove` never touches
-components another installed bundle still needs; and all consume/author commands
-work **offline** against local or pinned sources.
+Garantías fundamentales: `info` muestra exactamente lo que añade `install` (transparencia);
+las instalaciones son idempotentes y se limitan a la raíz del proyecto; `remove` nunca afecta a
+los componentes que otro paquete instalado aún necesita;y todos los comandos consume/author
+funcionan **offline** con fuentes locales o fijadas.
 
-### When to Use Which
+### Cuándo usar cada uno
 
-| Goal | Use |
+| Objetivo | Usar |
 | --- | --- |
-| Add a brand-new command or workflow | Extension |
-| Customize the format of specs, plans, or tasks | Preset |
-| Integrate an external tool or service | Extension |
-| Enforce organizational or regulatory standards | Preset |
-| Ship reusable domain-specific templates | Either — presets for template overrides, extensions for templates bundled with new commands |
-| Provision a complete role-based setup in one command | Bundle |
+| Añade un comando o un flujo de trabajo completamente nuevo | Extension |
+| Personaliza el formato de las especificaciones, los planos o las tareas | Preset |
+| Integra una herramienta o un servicio externo | Extension |
+| Aplica las normas organizativas o reglamentarias | Preset |
+| Enviar plantillas reutilizables específicas para cada dominio | O bien — presets para la personalización de plantillas, o bien extensions para plantillas que incluyen nuevos comandos |
+| Configura todo el sistema basado en roles con un solo comando | Bundle |
 
-## 📚 Core Philosophy
+## 📚 Filosofía fundamental
 
-Spec-Driven Development is a structured process that emphasizes:
+El desarrollo basado en especificaciones es un proceso estructurado que hace hincapié en:
 
-- **Intent-driven development** where specifications define the "*what*" before the "*how*"
-- **Rich specification creation** using guardrails and organizational principles
-- **Multi-step refinement** rather than one-shot code generation from prompts
-- **Heavy reliance** on advanced AI model capabilities for specification interpretation
+- **Desarrollo basado en la intención** en el que las especificaciones definen el "*qué*" antes que el "*cómo*"
+- **Creación de especificaciones detalladas** mediante directrices y principios organizativos
+- **Refinamiento en varias etapas**  en lugar de la generación de código de una sola vez a partir de indicaciones (prompts)
+- **Gran dependencia** de las capacidades avanzadas de los modelos de IA para la interpretación de las especificaciones
 
-## 🌟 Development Phases
+## 🌟 Fases de desarrollo
 
 | Phase                                    | Focus                    | Key Activities                                                                                                                                                     |
 | ---------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
