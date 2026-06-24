@@ -22,8 +22,8 @@
 - [🤔 ¿Qué es el desarrollo basado en especificaciones?](#-qué-es-el-desarrollo-basado-en-especificaciones)
 - [⚡ Cómo empezar](#-cómo-empezar)
 - [📽️ Resumen en vídeo](#️-resumen-en-vídeo)
-- [🌍 Comunidad](#-community)
-- [🤖 Integraciones compatibles con el agente de programación basado en IA](#-supported-ai-coding-agent-integrations)
+- [🌍 Comunidad](#-comunidad)
+- [🤖 Integraciones compatibles con agentes de programación basados en IA](#-integraciones-compatibles-con-agentes-de-programación-basados-en-ia)
 - [🔧 Referencia de Specify en la CLI](#-specify-cli-reference)
 - [🧩 Personaliza Spec Kit: extensiones y ajustes preestablecidos](#-making-spec-kit-your-own-extensions--presets)
 - [📦 Paquetes: configuraciones basadas en roles](#-bundles-role-based-setups)
@@ -124,29 +124,29 @@ Para obtener instrucciones detalladas paso a paso, consulta nuestra [guía compl
 
 ## 📽️ Resumen en vídeo
 
-Want to see Spec Kit in action? Watch our [video overview](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)!
+¿Quieres ver cómo funciona Spec Kit? Echa un vistazo a nuestro [resumen en vídeo](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)!
 
-[![Spec Kit video header](/media/spec-kit-video-header.jpg)](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)
+[![Cabecera del vídeo Spec Kit](/media/spec-kit-video-header.jpg)](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)
 
-## 🌍 Community
+## 🌍 Comunidad
 
-Explore community-contributed resources on the [Spec Kit docs site](https://github.github.io/spec-kit/):
+Explora los recursos aportados por la comunidad en el [sitio web de documentación de Spec Kit](https://github.github.io/spec-kit/):
 
-- [Extensions](https://github.github.io/spec-kit/community/extensions.html) — commands, hooks, and capabilities
+- [Extensiones](https://github.github.io/spec-kit/community/extensions.html) — commands, hooks, and capabilities
 - [Presets](https://github.github.io/spec-kit/community/presets.html) — template and terminology overrides
-- [Walkthroughs](https://github.github.io/spec-kit/community/walkthroughs.html) — end-to-end SDD scenarios
-- [Friends](https://github.github.io/spec-kit/community/friends.html) — projects that extend or build on Spec Kit
+- [Guías paso a paso](https://github.github.io/spec-kit/community/walkthroughs.html) — end-to-end SDD scenarios
+- [Amigos](https://github.github.io/spec-kit/community/friends.html) — projects that extend or build on Spec Kit
 
-> [!NOTE]
-> Community contributions are independently created and maintained by their respective authors. Review source code before installation and use at your own discretion.
+> [!NOTA]
+> Las contribuciones de la comunidad son creadas y mantenidas de forma independiente por sus respectivos autores. Revisa el código fuente antes de la instalación y utilízalo bajo tu propia responsabilidad.
 
-Want to contribute? See the [Extension Publishing Guide](extensions/EXTENSION-PUBLISHING-GUIDE.md) or the [Presets Publishing Guide](presets/PUBLISHING.md).
+¿Quieres colaborar? Consulta la [Guía de publicación de Extensión](extensions/EXTENSION-PUBLISHING-GUIDE.md) o la [Guía de publicación de presets](presets/PUBLISHING.md).
 
-## 🤖 Supported AI Coding Agent Integrations
+## 🤖 Integraciones compatibles con agentes de programación basados en IA
 
-Spec Kit works with 30+ AI coding agents — both CLI tools and IDE-based assistants. See the full list with notes and usage details in the [Supported AI Coding Agent Integrations](https://github.github.io/spec-kit/reference/integrations.html) guide.
+Spec Kit es compatible con más de 30 agentes de programación basados en IA — tanto herramientas de línea de comandos como asistentes integrados en entornos de desarrollo integrado (IDE). Consulta la lista completa, con notas y detalles de uso, en la guía [Integraciones compatibles con el agente de programación de IA](https://github.github.io/spec-kit/reference/integrations.html).
 
-Run `specify integration list` to see all available integrations in your installed version.
+Ejecuta `specify integration list` para ver todas las integraciones disponibles en la versión que tienes instalada.
 
 ## Available Slash Commands
 
