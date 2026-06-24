@@ -152,29 +152,29 @@ Ejecuta `specify integration list` para ver todas las integraciones disponibles 
 
 Tras ejecutar `specify init`, tu agente de programación de IA tendrá acceso a estos comandos con barra para un desarrollo estructurado. En el caso de las integraciones compatibles con el modo skills, al introducir `--integration <agent> --integration-options="--skills"` se instalan las skills del agente en lugar de los archivos de comandos con barra.
 
-### Core Commands
+### Comandos principales
 
-Essential commands for the Spec-Driven Development workflow:
+Comandos esenciales para el flujo de trabajo del desarrollo basado en especificaciones:
 
-| Command                  | Agent Skill            | Description                                                                |
+| Comando                  | Agente Skill            | Descripción                                                                |
 | ------------------------ | ---------------------- | -------------------------------------------------------------------------- |
-| `/speckit.constitution`  | `speckit-constitution` | Create or update project governing principles and development guidelines   |
-| `/speckit.specify`       | `speckit-specify`      | Define what you want to build (requirements and user stories)              |
-| `/speckit.plan`          | `speckit-plan`         | Create technical implementation plans with your chosen tech stack          |
-| `/speckit.tasks`         | `speckit-tasks`        | Generate actionable task lists for implementation                          |
-| `/speckit.taskstoissues` | `speckit-taskstoissues`| Convert generated task lists into GitHub issues for tracking and execution |
-| `/speckit.implement`     | `speckit-implement`    | Execute all tasks to build the feature according to the plan               |
-| `/speckit.converge`      | `speckit-converge`     | Assess the codebase against spec/plan/tasks and append remaining work as new tasks |
+| `/speckit.constitution`  | `speckit-constitution` | Elabora o actualiza los principios rectores del proyecto y las directrices de desarrollo   |
+| `/speckit.specify`       | `speckit-specify`      | Define lo que quieres desarrollar (requisitos e historias de usuario)              |
+| `/speckit.plan`          | `speckit-plan`         | Elabora planes de implementación técnica con la pila tecnológica que hayas elegido          |
+| `/speckit.tasks`         | `speckit-tasks`        | Elabora listas de tareas concretas para su puesta en práctica                          |
+| `/speckit.taskstoissues` | `speckit-taskstoissues`| Convierte las listas de tareas generadas en incidencias de GitHub para su seguimiento y ejecución |
+| `/speckit.implement`     | `speckit-implement`    | Llevar a cabo todas las tareas necesarias para desarrollar la funcionalidad según lo previsto               |
+| `/speckit.converge`      | `speckit-converge`     | Evalúa el código en función de las especificaciones, el plan y las tareas, y añade el trabajo pendiente como nuevas tareas. |
 
-### Optional Commands
+### Comandos opcionales
 
-Additional commands for enhanced quality and validation:
+Comandos adicionales para mejorar la calidad y la validación:
 
-| Command              | Agent Skill            | Description                                                                                                                          |
+| Comando              | Agente Skill            | Descripción                                                                                                                          |
 | -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `/speckit.clarify`   | `speckit-clarify`      | Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)                                                |
-| `/speckit.analyze`   | `speckit-analyze`      | Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)                             |
-| `/speckit.checklist` | `speckit-checklist`    | Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English") |
+| `/speckit.clarify`   | `speckit-clarify`      | Aclara los aspectos que no estén suficientemente especificados (se recomienda hacerlo antes de ejecutar `/speckit.plan`; anteriormente `/quizme`)                                                |
+| `/speckit.analyze`   | `speckit-analyze`      | Análisis de consistencia y cobertura entre artefactos (ejecutar después de `/speckit.tasks`, y antes de `/speckit.implement`)                             |
+| `/speckit.checklist` | `speckit-checklist`    | Crea listas de comprobación de calidad personalizadas que verifiquen la exhaustividad, la claridad y la coherencia de los requisitos (como "pruebas unitarias en inglés") |
 
 ## 🔧 Specify CLI Reference
 
