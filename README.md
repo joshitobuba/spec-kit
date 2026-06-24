@@ -41,7 +41,7 @@
 
 El desarrollo basado en especificaciones **da un giro radical** al desarrollo de software tradicional. Durante décadas, el código ha sido el rey — las especificaciones no eran más que un andamiaje que construíamos y descartábamos una vez que comenzaba el "trabajo de verdad" de la programación. El desarrollo basado en especificaciones cambia esto: **las especificaciones se convierten en ejecutables**, generando directamente implementaciones funcionales en lugar de limitarse a guiarlas.
 
-## ⚡Cómo empezar
+## ⚡ Cómo empezar
 
 ### 1. Instalar Specify en CLI
 
@@ -90,7 +90,7 @@ Utiliza el comando **`/speckit.constitution`** para definir los principios recto
 
 ### 4. Elaborar las especificaciones
 
-Utiliza el comando **`/speckit.specify`** para describir lo que quieres crear. Céntrate en el **qué** and **por qué**, no en la pila tecnológica.
+Utiliza el comando **`/speckit.specify`** para describir lo que quieres crear. Céntrate en el **qué** y **por qué**, no en la pila tecnológica.
 
 ```bash
 /speckit.specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never in other nested albums. Within each album, photos are previewed in a tile-like interface.
