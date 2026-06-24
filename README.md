@@ -180,18 +180,18 @@ Comandos adicionales para mejorar la calidad y la validación:
 
 Para obtener información detallada sobre los comandos, las opciones y los ejemplos, consulta la [Referencia CLI](https://github.github.io/spec-kit/reference/overview.html).
 
-## 🧩 Making Spec Kit Your Own: Extensions & Presets
+## 🧩 Personaliza Spec Kit: extensiones y ajustes preestablecidos
 
-Spec Kit can be tailored to your needs through two complementary systems — **extensions** and **presets** — plus project-local overrides for one-off adjustments:
+Spec Kit se puede adaptar a tus necesidades mediante dos sistemas complementarios — **extensiones** y **presets** — además de modificaciones específicas del proyecto para ajustes puntuales:
 
-| Priority | Component Type                                    | Location                         |
+| Prioridad | Tipo de Componente                                    | Ubicación                         |
 | -------: | ------------------------------------------------- | -------------------------------- |
-|      ⬆ 1 | Project-Local Overrides                           | `.specify/templates/overrides/`  |
-|        2 | Presets — Customize core & extensions             | `.specify/presets/templates/`    |
-|        3 | Extensions — Add new capabilities                 | `.specify/extensions/templates/` |
-|      ⬇ 4 | Spec Kit Core — Built-in SDD commands & templates | `.specify/templates/`            |
+|      ⬆ 1 | Project-Local Sobreescribe                        | `.specify/templates/overrides/`  |
+|        2 | Presets — Personaliza el núcleo y las extensiones | `.specify/presets/templates/`    |
+|        3 | Extensions — Añade nuevas funciones               | `.specify/extensions/templates/` |
+|      ⬇ 4 | Spec Kit Core — Comandos y plantillas de SDD integrados | `.specify/templates/`            |
 
-- **Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match.
+- Los **Templates** se resuelven **runtime** — Spec Kit walks the stack top-down and uses the first match.
 - Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset.
 - **Extension/preset commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`).
 - If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically.
