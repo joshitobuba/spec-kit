@@ -300,165 +300,164 @@ El desarrollo basado en especificaciones es un proceso estructurado que hace hin
 
 ## 🌟 Fases de desarrollo
 
-| Phase                                    | Focus                    | Key Activities                                                                                                                                                     |
+| Fase                                    | Foco                    | Actividades clave                                                                                                                                                     |
 | ---------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **0-to-1 Development** ("Greenfield")    | Generate from scratch    | <ul><li>Start with high-level requirements</li><li>Generate specifications</li><li>Plan implementation steps</li><li>Build production-ready applications</li></ul> |
-| **Creative Exploration**                 | Parallel implementations | <ul><li>Explore diverse solutions</li><li>Support multiple technology stacks & architectures</li><li>Experiment with UX patterns</li></ul>                         |
-| **Iterative Enhancement** ("Brownfield") | Brownfield modernization | <ul><li>Add features iteratively</li><li>Modernize legacy systems</li><li>Adapt processes</li></ul>                                                                |
+| **Desarrollo «de 0 a 1»** ("Greenfield")    | Crea desde cero    | <ul><li>Empieza por los requisitos generales</li><li>Genera especificaciones</li><li>Pasos para la puesta en práctica del plan</li><li>Crea aplicaciones listas para su uso en producción</li></ul> |
+| **Exploración creativa**                 | Implementaciones paralelas | <ul><li>Descubre diversas soluciones</li><li>Compatibilidad con múltiples pilas tecnológicas y arquitecturas</li><li>Experimenta con los patrones de UX</li></ul>                         |
+| **Mejora iterativa** ("Brownfield") | Modernización Brownfield | <ul><li>Añade funciones de forma iterativa</li><li>Moderniza los sistemas heredados</li><li>Adapta los procesos</li></ul>                                                                |
 
-For existing projects, keep Spec Kit tooling updates separate from feature
-artifact evolution: refresh managed project files when upgrading, and update
-`specs/` artifacts when intended behavior changes. The
-[Evolving Specs guide](./docs/guides/evolving-specs.md) describes the
-recommended brownfield loop.
+En el caso de los proyectos existentes, mantén las actualizaciones de las herramientas de Spec Kit separadas de la evolución de los
+artefactos de características: actualiza los archivos gestionados del proyecto al realizar una actualización y actualiza
+los artefactos de `specs/` artifacts cuando cambie el comportamiento previsto. La
+[Guía sobre la evolución de las especificaciones](./docs/guides/evolving-specs.md) describe el ciclo de evolución recomendado para entornos heredados (brownfield).
 
-## 🎯 Experimental Goals
+## 🎯 Objetivos experimentales
 
-Our research and experimentation focus on:
+Nuestra investigación y experimentación se centran en:
 
-### Technology independence
+### Independencia tecnológica
 
-- Create applications using diverse technology stacks
-- Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks
+- Crear aplicaciones utilizando diversas pilas tecnológicas
+- Validar la hipótesis de que el desarrollo basado en especificaciones es un proceso que no está vinculado a tecnologías, lenguajes de programación o frameworks específicos
 
-### Enterprise constraints
+### Limitaciones de la empresa
 
-- Demonstrate mission-critical application development
-- Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)
-- Support enterprise design systems and compliance requirements
+- Demostrar el desarrollo de aplicaciones críticas para la misión
+- Incorporar las limitaciones de la organización (proveedores de servicios en la nube, pilas tecnológicas, prácticas de ingeniería)
+- Dar soporte a los sistemas de diseño corporativos y a los requisitos de cumplimiento normativo
 
-### User-centric development
+### Desarrollo centrado en el usuario
 
-- Build applications for different user cohorts and preferences
-- Support various development approaches (from vibe-coding to AI-native development)
+- Crear aplicaciones para diferentes grupos de usuarios y preferencias
+- Admitir diversos enfoques de desarrollo (desde el vibe-coding hasta el desarrollo nativo de IA)
 
-### Creative & iterative processes
+### Procesos creativos e iterativos
 
-- Validate the concept of parallel implementation exploration
-- Provide robust iterative feature development workflows
-- Extend processes to handle upgrades and modernization tasks
+- Validar el concepto de exploración de la implementación en paralelo
+- Proporcionar flujos de trabajo sólidos e iterativos para el desarrollo de funcionalidades
+- Ampliar los procesos para gestionar las actualizaciones y las tareas de modernización
 
-## 🔧 Prerequisites
+## 🔧 Prerequisitos
 
 - **Linux/macOS/Windows**
-- [Supported](#-supported-ai-coding-agent-integrations) AI coding agent.
-- [uv](https://docs.astral.sh/uv/) for package management (recommended) or [pipx](https://pipx.pypa.io/) for persistent installation
+- [Soportado](#-supported-ai-coding-agent-integrations) Agente de programación de IA.
+- [uv](https://docs.astral.sh/uv/) para la gestión de paquetes (recomendado) o [pipx](https://pipx.pypa.io/) para una instalación permanente
 - [Python 3.11+](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads)
 
-If you encounter issues with an agent, please open an issue so we can refine the integration.
+Si tienes algún problema con un agente, abre una incidencia para que podamos mejorar la integración.
 
-## 📖 Learn More
+## 📖 Aprende más
 
-- **[Complete Spec-Driven Development Methodology](./spec-driven.md)** - Deep dive into the full process
-- **[Detailed Walkthrough](#-detailed-process)** - Step-by-step implementation guide
+- **[Metodología completa de desarrollo basada en especificaciones](./spec-driven.md)** - Análisis en profundidad de todo el proceso
+- **[Guía paso a paso detallada](#-detailed-process)** - Guía de implementación paso a paso
 
 ---
 
-## 📋 Detailed Process
+## 📋 Proceso detallado
 
 <details>
-<summary>Click to expand the detailed step-by-step walkthrough</summary>
+<summary>Haz clic para ver la guía detallada paso a paso</summary>
 
-You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:
+Puedes utilizar la CLI de Specify para iniciar tu proyecto, lo que incorporará los artefactos necesarios a tu entorno. Ejecuta:
 
 ```bash
 specify init <project_name>
 ```
 
-Or initialize in the current directory:
+O bien, inicializa en el directorio actual:
 
 ```bash
 specify init .
-# or use the --here flag
+# o utiliza la opción --here
 specify init --here
-# Skip confirmation when the directory already has files
+# Omitir la confirmación cuando el directorio ya contenga archivos
 specify init . --force
-# or
+# o
 specify init --here --force
 ```
 
-![Specify CLI bootstrapping a new project in the terminal](./media/specify_cli.gif)
+![Specify CLI iniciar un nuevo proyecto en la terminal](./media/specify_cli.gif)
 
-In an interactive terminal, you will be prompted to select the coding agent integration you are using. In non-interactive sessions, such as CI or piped runs, `specify init` defaults to GitHub Copilot unless you pass `--integration`. You can also proactively specify the integration directly in the terminal:
+En una terminal interactiva, se te pedirá que selecciones la integración del agente de codificación que estés utilizando. En sesiones no interactivas, como las ejecuciones en CI o canalizadas, `specify init` utiliza GitHub Copilot por defecto, a menos que se especifique el parámetro `--integration`. También puedes especificar la integración de forma proactiva directamente en la terminal:
 
 ```bash
 specify init <project_name> --integration copilot
 specify init <project_name> --integration gemini
 specify init <project_name> --integration codex
 
-# Or in current directory:
+# O bien, en el directorio actual:
 specify init . --integration copilot
 specify init . --integration codex --integration-options="--skills"
 
-# or use --here flag
+# o utiliza la opción --here
 specify init --here --integration copilot
 specify init --here --integration codex --integration-options="--skills"
 
-# Force merge into a non-empty current directory
+# Forzar la fusión en un directorio actual no vacío
 specify init . --force --integration copilot
 
-# or
+# o bien
 specify init --here --force --integration copilot
 ```
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, Goose, Mistral Vibe, or ZCode installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+La CLI comprobará si tienes instalado Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, Goose, Mistral Vibe, o ZCode. Si no es así, o si prefieres obtener las plantillas sin que se compruebe si dispones de las herramientas adecuadas, utiliza `--ignore-agent-tools` con tu comando:
 
 ```bash
 specify init <project_name> --integration copilot --ignore-agent-tools
 ```
 
-### **STEP 1:** Establish project principles
+### **PASO 1:** Establecer los principios del proyecto
 
-Go to the project folder and run your coding agent. In our example, we're using `claude`.
+Ve a la carpeta del proyecto y ejecuta tu agente de programación. En nuestro ejemplo, utilizamos `claude`.
 
-![Bootstrapping Claude Code environment](./media/bootstrap-claude-code.gif)
+![Inicialización del entorno de Claude Code](./media/bootstrap-claude-code.gif)
 
-You will know that things are configured correctly if you see the `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, and `/speckit.implement` commands available.
+Sabrás que todo está configurado correctamente si ves que están disponibles los comandos `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, y `/speckit.implement`.
 
-The first step should be establishing your project's governing principles using the `/speckit.constitution` command. This helps ensure consistent decision-making throughout all subsequent development phases:
+El primer paso debe consistir en establecer los principios rectores de tu proyecto mediante el comando `/speckit.constitution`. Esto ayuda a garantizar la coherencia en la toma de decisiones a lo largo de todas las fases de desarrollo posteriores:
 
 ```text
-/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
+/speckit.constitution Establecer principios centrados en la calidad del código, las normas de pruebas, la coherencia de la experiencia del usuario y los requisitos de rendimiento. Incluir mecanismos de gobernanza que regulen cómo estos principios deben orientar las decisiones técnicas y las opciones de implementación.
 ```
 
-This step creates or updates the `.specify/memory/constitution.md` file with your project's foundational guidelines that the coding agent will reference during specification, planning, and implementation phases.
+Este paso crea o actualiza el archivo `.specify/memory/constitution.md` con las directrices fundamentales de tu proyecto, a las que el agente de programación hará referencia durante las fases de especificación, planificación e implementación.
 
-### **STEP 2:** Create project specifications
+### **PASO 2:** Crear las especificaciones del proyecto
 
-With your project principles established, you can now create the functional specifications. Use the `/speckit.specify` command and then provide the concrete requirements for the project you want to develop.
+Una vez establecidos los principios de tu proyecto, ya puedes crear las especificaciones funcionales. Utiliza el comando `/speckit.specify` y, a continuación, indica los requisitos concretos del proyecto que deseas desarrollar.
 
 > [!IMPORTANT]
-> Be as explicit as possible about *what* you are trying to build and *why*. **Do not focus on the tech stack at this point**.
+> Sé lo más claro posible sobre *qué* estás intentando crear y *por qué*. **No te centres en la pila tecnológica en este momento**.
 
-An example prompt:
+Un prompt de ejemplo:
 
 ```text
-Develop Taskify, a team productivity platform. It should allow users to create projects, add team members,
-assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature,
-let's call it "Create Taskify," let's have multiple users but the users will be declared ahead of time, predefined.
-I want five users in two different categories, one product manager and four engineers. Let's create three
-different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do,"
-"In Progress," "In Review," and "Done." There will be no login for this application as this is just the very
-first testing thing to ensure that our basic features are set up. For each task in the UI for a task card,
-you should be able to change the current status of the task between the different columns in the Kanban work board.
-You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task
-card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick
-from. There will be no password required. When you click on a user, you go into the main view, which displays the list of
-projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns.
-You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are
-assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly
-see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can
-delete any comments that you made, but you can't delete comments anybody else made.
+Desarrolla Taskify, una plataforma de productividad para equipos. Debe permitir a los usuarios crear proyectos, añadir miembros al equipo,
+asignar tareas, comentar y mover tareas entre tableros al estilo Kanban. En esta fase inicial de la funcionalidad,
+que llamaremos «Crear Taskify», contaremos con varios usuarios, pero estos se declararán de antemano, es decir, serán predefinidos.
+Quiero cinco usuarios en dos categorías diferentes: un gestor de producto y cuatro ingenieros. Creemos tres
+proyectos de ejemplo diferentes. Incluyamos las columnas Kanban estándar para el estado de cada tarea, como «Por hacer»,
+«En curso», «En revisión» y «Hecho». No habrá inicio de sesión para esta aplicación, ya que se trata simplemente de la
+primera prueba para asegurarnos de que nuestras funciones básicas están configuradas. Para cada tarea en la interfaz de usuario de una ficha de tarea,
+deberías poder cambiar el estado actual de la tarea entre las diferentes columnas del tablero Kanban.
+Deberías poder dejar un número ilimitado de comentarios en una ficha concreta. Deberías poder, desde esa tarjeta de tarea,
+asignar a uno de los usuarios válidos. Cuando inicies Taskify por primera vez, te mostrará una lista de cinco usuarios entre los que elegir.
+No se requerirá contraseña. Al hacer clic en un usuario, accederás a la vista principal, que muestra la lista de
+proyectos. Al hacer clic en un proyecto, se abrirá el tablero Kanban de dicho proyecto. Verás las columnas.
+Podrás arrastrar y soltar tarjetas de una columna a otra. Las tarjetas que estén
+asignadas a ti, el usuario que haya iniciado sesión, aparecerán en un color diferente al del resto, para que puedas
+identificarlas rápidamente. Puedes editar cualquier comentario que hayas escrito, pero no puedes editar los comentarios que hayan escrito otras personas. Puedes
+eliminar cualquier comentario que hayas escrito, pero no puedes eliminar los comentarios que hayan escrito otras personas.
 ```
 
-After this prompt is entered, you should see Claude Code kick off the planning and spec drafting process. Claude Code will also trigger some of the built-in scripts to set up the repository.
+Una vez introducida este prompt, deberías ver cómo Claude Code inicia el proceso de planificación y redacción de especificaciones. Claude Code también activará algunos de los scripts integrados para configurar el repositorio.
 
-Once this step is completed, you should have a new branch created (e.g., `001-create-taskify`), as well as a new specification in the `specs/001-create-taskify` directory.
+Una vez completado este paso, deberías tener una nueva rama creada (por ejemplo, `001-create-taskify`), así como una nueva especificación en el directorio `specs/001-create-taskify`.
 
-The produced specification should contain a set of user stories and functional requirements, as defined in the template.
+El documento de especificaciones resultante debe contener un conjunto de historias de usuario y requisitos funcionales, tal y como se define en la plantilla.
 
-At this stage, your project folder contents should resemble the following:
+En este punto, el contenido de la carpeta de tu proyecto debería ser similar al siguiente:
 
 ```text
 .
@@ -481,7 +480,7 @@ At this stage, your project folder contents should resemble the following:
         └── spec.md
 ```
 
-### **STEP 3:** Functional specification clarification (required before planning)
+### **PASO 3:** Aclaración de las especificaciones funcionales (necesaria antes de la planificación)
 
 With the baseline specification created, you can go ahead and clarify any of the requirements that were not captured properly within the first shot attempt.
 
