@@ -32,7 +32,7 @@
 - [🎯 Objetivos experimentales](#-objetivos-experimentales)
 - [🔧 Prerequisitos](#-prerequisitos)
 - [📖 Aprende más](#-aprende-más)
-- [📋 Proceso detallado](#proceso-detallado)
+- [📋 Proceso detallado](#-proceso-detallado)
 - [💬 Asistencia](#-asistencia)
 - [🙏 Agradecimientos](#-agradecimientos)
 - [📄 Licencia](#-licencia)
