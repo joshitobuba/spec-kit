@@ -427,7 +427,7 @@ Este paso crea o actualiza el archivo `.specify/memory/constitution.md` con las 
 
 Una vez establecidos los principios de tu proyecto, ya puedes crear las especificaciones funcionales. Utiliza el comando `/speckit.specify` y, a continuación, indica los requisitos concretos del proyecto que deseas desarrollar.
 
-> [!IMPORTANT]
+> [!IMPORTANTE]
 > Sé lo más claro posible sobre *qué* estás intentando crear y *por qué*. **No te centres en la pila tecnológica en este momento**.
 
 Un prompt de ejemplo:
@@ -482,44 +482,44 @@ En este punto, el contenido de la carpeta de tu proyecto debería ser similar al
 
 ### **PASO 3:** Aclaración de las especificaciones funcionales (necesaria antes de la planificación)
 
-With the baseline specification created, you can go ahead and clarify any of the requirements that were not captured properly within the first shot attempt.
+Una vez creada la especificación de referencia, puedes proceder a aclarar cualquiera de los requisitos que no se hayan recogido correctamente en el primer intento.
 
-You should run the structured clarification workflow **before** creating a technical plan to reduce rework downstream.
+Debes ejecutar el flujo de trabajo de aclaración estructurado **antes** de crear un plan técnico para reducir el trabajo adicional en fases posteriores.
 
-Preferred order:
+Orden recomendado:
 
-1. Use `/speckit.clarify` (structured) – sequential, coverage-based questioning that records answers in a Clarifications section.
-2. Optionally follow up with ad-hoc free-form refinement if something still feels vague.
+1. Utiliza `/speckit.clarify` (estructurado) – un proceso de preguntas secuencial y basado en la cobertura que registra las respuestas en una sección de Aclaraciones.
+2. Opcionalmente, continúa con un refinamiento ad hoc de formato libre si algo sigue pareciendo impreciso.
 
-If you intentionally want to skip clarification (e.g., spike or exploratory prototype), explicitly state that so the agent doesn't block on missing clarifications.
+Si deseas omitir intencionadamente la aclaración (por ejemplo, en un prototipo exploratorio o de prueba), indícalo explícitamente para que el agente no se bloquee por la falta de aclaraciones.
 
-Example free-form refinement prompt (after `/speckit.clarify` if still needed):
-
-```text
-For each sample project or project that you create there should be a variable number of tasks between 5 and 15
-tasks for each one randomly distributed into different states of completion. Make sure that there's at least
-one task in each stage of completion.
-```
-
-You should also ask Claude Code to validate the **Review & Acceptance Checklist**, checking off the things that are validated/pass the requirements, and leave the ones that are not unchecked. The following prompt can be used:
+Ejemplo de solicitud de refinamiento de formato libre (después de `/speckit.clarify` si sigue siendo necesario):
 
 ```text
-Read the review and acceptance checklist, and check off each item in the checklist if the feature spec meets the criteria. Leave it empty if it does not.
+Por cada proyecto de ejemplo o proyecto que crees, debe haber un número variable de tareas, entre 5 y 15,
+distribuidas aleatoriamente en diferentes estados de finalización. Asegúrate de que haya al menos
+una tarea en cada fase de finalización.
 ```
 
-It's important to use the interaction with Claude Code as an opportunity to clarify and ask questions around the specification - **do not treat its first attempt as final**.
-
-### **STEP 4:** Generate a plan
-
-You can now be specific about the tech stack and other technical requirements. You can use the `/speckit.plan` command that is built into the project template with a prompt like this:
+También deberías pedirle a Claude Code que valide la **Lista de comprobación de revisión y aceptación**, marcando los elementos que estén validados o que cumplan los requisitos, y dejando sin marcar los que no lo estén. Se puede utilizar la siguiente indicación:
 
 ```text
-We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
-Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API,
-tasks API, and a notifications API.
+Lee la lista de comprobación de revisión y aceptación, y marca cada elemento de la lista si las especificaciones de la funcionalidad cumplen los criterios. Déjalo en blanco si no es así.
 ```
 
-The output of this step will include a number of implementation detail documents, with your directory tree resembling this:
+Es importante aprovechar la interacción con Claude Code como una oportunidad para aclarar dudas y plantear preguntas sobre la especificación - **no consideres su primer intento como definitivo**.
+
+### **PASO 4:** Elaborar un plan
+
+Ahora puedes especificar la pila tecnológica y otros requisitos técnicos. Puedes utilizar el comando `/speckit.plan` que viene integrado en la plantilla del proyecto, con una línea de comando como esta:
+
+```text
+Vamos a desarrollar esto con .NET Aspire, utilizando Postgres como base de datos. La interfaz de usuario deberá utilizar
+Blazor Server con tableros de tareas de arrastrar y soltar y actualizaciones en tiempo real. Se deberá crear una API REST que incluya una API de proyectos,
+una API de tareas y una API de notificaciones.
+```
+
+El resultado de este paso incluirá varios documentos con detalles de implementación, y tu árbol de directorios tendrá un aspecto similar a este:
 
 ```text
 .
@@ -551,104 +551,104 @@ The output of this step will include a number of implementation detail documents
         └── spec.md
 ```
 
-Check the `research.md` document to ensure that the right tech stack is used, based on your instructions. You can ask Claude Code to refine it if any of the components stand out, or even have it check the locally-installed version of the platform/framework you want to use (e.g., .NET).
+Consulta el documento `research.md` para asegurarte de que se utiliza la pila tecnológica adecuada, según tus instrucciones. Puedes pedirle a Claude Code que lo perfeccione si alguno de los componentes llama la atención, o incluso que compruebe la versión instalada localmente de la plataforma o el marco de trabajo que quieras utilizar (por ejemplo, .NET).
 
-Additionally, you might want to ask Claude Code to research details about the chosen tech stack if it's something that is rapidly changing (e.g., .NET Aspire, JS frameworks), with a prompt like this:
-
-```text
-I want you to go through the implementation plan and implementation details, looking for areas that could
-benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that
-require further research, I want you to update the research document with additional details about the specific
-versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify
-any details using research from the web.
-```
-
-During this process, you might find that Claude Code gets stuck researching the wrong thing - you can help nudge it in the right direction with a prompt like this:
+Además, quizá te interese pedirle a Claude Code que busque información sobre la pila tecnológica elegida si se trata de un ámbito que evoluciona rápidamente (por ejemplo, .NET Aspire o los marcos de trabajo de JavaScript), con una indicación como esta:
 
 ```text
-I think we need to break this down into a series of steps. First, identify a list of tasks
-that you would need to do during implementation that you're not sure of or would benefit
-from further research. Write down a list of those tasks. And then for each one of these tasks,
-I want you to spin up a separate research task so that the net results is we are researching
-all of those very specific tasks in parallel. What I saw you doing was it looks like you were
-researching .NET Aspire in general and I don't think that's gonna do much for us in this case.
-That's way too untargeted research. The research needs to help you solve a specific targeted question.
+Quiero que revises el plan de implementación y los detalles de la misma, buscando áreas que podrían
+beneficiarse de una investigación adicional, ya que .NET Aspire es una biblioteca que evoluciona rápidamente. En cuanto a aquellas áreas que identifiques y que
+requieran una investigación más profunda, quiero que actualices el documento de investigación con detalles adicionales sobre las versiones específicas
+que vamos a utilizar en esta aplicación Taskify y que crees tareas de investigación paralelas para aclarar
+cualquier detalle utilizando información de la web.
 ```
 
-> [!NOTE]
-> Claude Code might be over-eager and add components that you did not ask for. Ask it to clarify the rationale and the source of the change.
-
-### **STEP 5:** Have Claude Code validate the plan
-
-With the plan in place, you should have Claude Code run through it to make sure that there are no missing pieces. You can use a prompt like this:
+Durante este proceso, es posible que te des cuenta de que Claude Code se queda atascado investigando algo que no viene al caso; puedes ayudarle a encaminarlo en la dirección correcta con una indicación como esta:
 
 ```text
-Now I want you to go and audit the implementation plan and the implementation detail files.
-Read through it with an eye on determining whether or not there is a sequence of tasks that you need
-to be doing that are obvious from reading this. Because I don't know if there's enough here. For example,
-when I look at the core implementation, it would be useful to reference the appropriate places in the implementation
-details where it can find the information as it walks through each step in the core implementation or in the refinement.
+Creo que tenemos que desglosar esto en una serie de pasos. En primer lugar, identifica una lista de tareas
+que tendrías que realizar durante la implementación y sobre las que no estás seguro o para las que sería útil
+investigar más a fondo. Anota una lista de esas tareas. Y luego, para cada una de ellas,
+quiero que crees una tarea de investigación independiente, de modo que el resultado final sea que estemos investigando
+todas esas tareas muy específicas en paralelo. Lo que vi que estabas haciendo es que parecía que estabas
+investigando sobre .NET Aspire en general, y no creo que eso nos sirva de mucho en este caso.
+Esa investigación es demasiado poco específica. La investigación tiene que ayudarte a resolver una cuestión concreta y específica.
 ```
 
-This helps refine the implementation plan and helps you avoid potential blind spots that Claude Code missed in its planning cycle. Once the initial refinement pass is complete, ask Claude Code to go through the checklist once more before you can get to the implementation.
+> [!NOTA]
+> Es posible que Claude Code se entusiasme demasiado y añada componentes que no has solicitado. Pídele que te aclare los motivos y el origen del cambio.
 
-You can also ask Claude Code (if you have the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli) installed) to go ahead and create a pull request from your current branch to `main` with a detailed description, to make sure that the effort is properly tracked.
+### **PASO 5:** Pide a Claude Code que valide el plan
 
-> [!NOTE]
-> Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the constitution in `.specify/memory/constitution.md` as the foundational piece that it must adhere to when establishing the plan.
+Una vez que tengas el plan listo, deberías hacer que Claude Code lo revise para asegurarte de que no falte nada. Puedes utilizar una indicación como esta:
 
-### **STEP 6:** Generate task breakdown with /speckit.tasks
+```text
+Ahora quiero que revises el plan de implementación y los archivos con los detalles de la misma.
+Léelos con la intención de determinar si hay o no una secuencia de tareas que debas
+realizar y que resulten evidentes al leerlos. Porque no sé si hay suficiente información aquí. Por ejemplo,
+cuando examino la implementación del núcleo, sería útil hacer referencia a los apartados correspondientes de los detalles de implementación
+donde se pueda encontrar la información a medida que se va avanzando por cada paso de la implementación del núcleo o en el refinamiento.
+```
 
-With the implementation plan validated, you can now break down the plan into specific, actionable tasks that can be executed in the correct order. Use the `/speckit.tasks` command to automatically generate a detailed task breakdown from your implementation plan:
+Esto ayuda a perfeccionar el plan de implementación y te permite evitar posibles puntos ciegos que Claude Code haya pasado por alto en su ciclo de planificación. Una vez completada la primera ronda de perfeccionamiento, pide a Claude Code que revise la lista de comprobación una vez más antes de pasar a la implementación.
+
+También puedes pedirle a Claude Code (si tienes instalada la [GitHub CLI](https://docs.github.com/en/github-cli/github-cli) que cree una solicitud de incorporación de cambios desde tu rama actual a `main` con una descripción detallada, para asegurarte de que el trabajo se supervisa adecuadamente.
+
+> [!NOTA]
+> Antes de que el agente lo implemente, también conviene pedirle a Claude Code que compruebe los detalles para ver si hay algún elemento sobredimensionado (recuerda: puede ser demasiado entusiasta). Si hay componentes o decisiones demasiado complejos, puedes pedirle a Claude Code que los resuelva. Asegúrate de que Claude Code siga la constitución que figura en `.specify/memory/constitution.md` como la base a la que debe ceñirse a la hora de establecer el plan.
+
+### **PASO 6:** Generar un desglose de tareas con /speckit.tasks
+
+Una vez validado el plan de implementación, ya puedes desglosarlo en tareas específicas y prácticas que se puedan llevar a cabo en el orden correcto. Utiliza el comando `/speckit.tasks` para generar automáticamente un desglose detallado de las tareas a partir de tu plan de implementación:
 
 ```text
 /speckit.tasks
 ```
 
-This step creates a `tasks.md` file in your feature specification directory that contains:
+Este paso crea un archivo `tasks.md` en el directorio de especificaciones de la característica que contiene:
 
-- **Task breakdown organized by user story** - Each user story becomes a separate implementation phase with its own set of tasks
-- **Dependency management** - Tasks are ordered to respect dependencies between components (e.g., models before services, services before endpoints)
-- **Parallel execution markers** - Tasks that can run in parallel are marked with `[P]` to optimize development workflow
-- **File path specifications** - Each task includes the exact file paths where implementation should occur
-- **Test-driven development structure** - If tests are requested, test tasks are included and ordered to be written before implementation
-- **Checkpoint validation** - Each user story phase includes checkpoints to validate independent functionality
+- **Desglose de tareas organizado por historia de usuario** - Cada historia de usuario se convierte en una fase de implementación independiente con su propio conjunto de tareas
+- **Gestión de dependencias** - Las tareas se ordenan de forma que se respeten las dependencias entre componentes (por ejemplo, los modelos antes que los servicios, y los servicios antes que los puntos finales)
+- **Marcadores de ejecución en paralelo** - las tareas que pueden ejecutarse en paralelo se marcan con `[P]` para optimizar el flujo de trabajo de desarrollo
+- **Especificaciones de rutas de archivo** - cada tarea incluye las rutas exactas de los archivos en los que debe realizarse la implementación
+- **Estructura de desarrollo basado en pruebas** - si se solicitan pruebas, se incluyen tareas de prueba y se ordenan para que se escriban antes de la implementación
+- **Validación de puntos de control** - Each user story phase includes checkpoints to validate independent functionality
 
-The generated tasks.md provides a clear roadmap for the `/speckit.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
+El archivo tasks.md generado proporciona una hoja de ruta clara para el comando `/speckit.implement` lo que garantiza una implementación sistemática que mantiene la calidad del código y permite la entrega incremental de las historias de usuario.
 
-### **STEP 7:** Implementation
+### **PASO 7:** Implementación
 
-Once ready, use the `/speckit.implement` command to execute your implementation plan:
+Cuando esté todo listo, utiliza el comando `/speckit.implement` para ejecutar tu plan de implementación:
 
 ```text
 /speckit.implement
 ```
 
-The `/speckit.implement` command will:
+El comando `/speckit.implement` hará lo siguiente:
 
-- Validate that all prerequisites are in place (constitution, spec, plan, and tasks)
-- Parse the task breakdown from `tasks.md`
-- Execute tasks in the correct order, respecting dependencies and parallel execution markers
-- Follow the TDD approach defined in your task plan
-- Provide progress updates and handle errors appropriately
+- Comprueba que se cumplan todos los requisitos previos (constitución, especificaciones, plan y tareas)
+- Analiza el desglose de tareas del archivo `tasks.md`
+- Ejecuta las tareas en el orden correcto, respetando las dependencias y los marcadores de ejecución en paralelo
+- Sigue el enfoque TDD definido en tu plan de tareas
+- Proporciona información sobre el progreso y gestiona los errores de forma adecuada
 
-> [!IMPORTANT]
-> The coding agent will execute local CLI commands (such as `dotnet`, `npm`, etc.) - make sure you have the required tools installed on your machine.
+> [!IMPORTANTE]
+> El agente de programación ejecutará comandos locales de la CLI (como `dotnet`, `npm`, etc.) - asegúrate de tener las herramientas necesarias instaladas en tu equipo.
 
-Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your coding agent for resolution.
+Una vez completada la implementación, prueba la aplicación y resuelve cualquier error de ejecución que pueda no aparecer en los registros de la CLI (por ejemplo, errores de la consola del navegador). Puedes copiar y pegar dichos errores en tu agente de programación para que los resuelva.
 
 </details>
 
 ---
 
-## 💬 Support
+## 💬 Asistencia
 
-For support, please open a [GitHub issue](https://github.com/github/spec-kit/issues/new). We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
+Si necesitas ayuda, abre una [incidencia en GitHub](https://github.com/github/spec-kit/issues/new). Agradecemos los informes de errores, las solicitudes de nuevas funciones y las preguntas sobre el uso del desarrollo basado en especificaciones.
 
-## 🙏 Acknowledgements
+## 🙏 Agradecimientos
 
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
+Este proyecto está muy influenciado por el trabajo y la investigación de, y se basa en ellos: [John Lam](https://github.com/jflam).
 
-## 📄 License
+## 📄 Licencia
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
+Este proyecto está sujeto a los términos de la licencia de código abierto del MIT. Consulta el archivo [LICENSE](./LICENSE) para conocer los términos completos.
